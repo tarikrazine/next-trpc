@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
+import { prisma } from "../utils/prisma";
+
 export function createContext({
     req,
     res
@@ -9,7 +11,8 @@ export function createContext({
 }) {
     return {
         req,
-        res
+        res,
+        prisma
     }
 }
 

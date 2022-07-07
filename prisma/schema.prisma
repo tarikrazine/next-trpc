@@ -17,4 +17,17 @@ model User {
 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  loginToken  LoginToken[]
+}
+
+model LoginToken {
+  id          String @id @unique @default(cuid())
+
+  userId      String
+  user        User @relation(fields: [userId], references: [id])
+  
+  redirect    String @default("/")
+
+  createdAt   DateTime @default(now())
 }

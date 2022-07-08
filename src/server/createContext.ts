@@ -15,7 +15,7 @@ async function getUserFromRequest(req: NextApiRequest) {
 
     if (token) {
         try  {
-
+            
             return verifyJwt<CtxUser>(token);
 
         } catch (e) {

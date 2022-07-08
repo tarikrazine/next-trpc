@@ -12,13 +12,13 @@ export const postRouter =  createRouter()
         const user = await ctx.user;
 
         if (!user) {
-            throw new trpc.TRPCError({
+            new trpc.TRPCError({
                 code: "UNAUTHORIZED",
                 message: "You must be logged in to create a post"
             })
         }
 
-        const post = await createPost(ctx.prisma, input, user.id);
+        const post = await createPost(ctx.prisma, input, user?.id!);
 
         return post;
 
